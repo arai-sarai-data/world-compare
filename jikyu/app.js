@@ -8,7 +8,7 @@ const dict = {
     tabBm: 'ビッグマック', tabWage: '時給（物価調整後）', colHourly: '平均時給（現地通貨）', colPpp: '時給（国際ドル換算）', colBm: 'ビッグマックに必要な労働', colHours: '週の労働時間', colYear: '賃金の年',
     fastest: 'ビッグマック1個に必要な労働時間（短い順）', est: '推定', unreliable: '物価上昇が大きい・通貨の変更などで比較に向かない国（{n}か国）は順位から除いています。',
     noData: 'この国は賃金データがありません。', share: '{c}ではビッグマック1個に{m}分の労働。世界{r}位',
-    method: '<p>平均時給 = ILOの「被用者の平均月収（現地通貨）」÷（週の実労働時間×52÷12）。労働時間のデータがない国は週40時間と仮定し「推定」と表示します。</p><p>賃金の年から最新の消費者物価指数の年まで、物価の伸びで賃金を補正しています。</p><p>ビッグマックの価格はThe Economistの最新調査です。ユーロ圏で個別価格がない国はユーロ圏の価格を使います。</p><p>「同じ物」の計算は、民間消費の購買力平価（PPP）で値段を各国通貨に置き換えています。平均月収は高所得者に引っ張られるため、多くの人の実感より高めになります。</p>',
+    method: '<p>平均時給はILOの「被用者の平均時給（現地通貨）」を使います。時給がない国は「平均月収 ÷（週の実労働時間×52÷12）」で求め、労働時間もない国は週40時間と仮定して「推定」と表示します。</p><p>賃金の年から最新の消費者物価指数の年まで、物価の伸びで賃金を補正しています。</p><p>ビッグマックの価格はThe Economistの最新調査です。ユーロ圏で個別価格がない国はユーロ圏の価格を使います。</p><p>「同じ物」の計算は、民間消費の購買力平価（PPP）で値段を各国通貨に置き換えています。平均賃金は高所得者に引っ張られるため、多くの人の実感より高めになります。</p>',
   },
   en: {
     title: 'What does an hour of work buy?', lead: 'Average wages (ILO) combined with prices show how long people in each country work to buy the same thing.',
@@ -17,7 +17,7 @@ const dict = {
     tabBm: 'Big Mac', tabWage: 'Pay (price-adjusted)', colHourly: 'Hourly pay (local currency)', colPpp: 'Hourly pay (international $)', colBm: 'Work for a Big Mac', colHours: 'Hours per week', colYear: 'Wage year',
     fastest: 'Work needed for one Big Mac (shortest first)', est: 'est.', unreliable: '{n} countries with high inflation or currency changes are left out of the ranking.',
     noData: 'No wage data for this country.', share: 'In {c}, a Big Mac costs {m} minutes of work. #{r} in the world',
-    method: '<p>Hourly pay = ILO mean monthly earnings of employees (local currency) ÷ (weekly hours actually worked × 52 ÷ 12). Where hours are missing we assume 40 a week and mark it “est.”.</p><p>Wages are brought forward to the latest consumer price index year.</p><p>Big Mac prices are The Economist’s latest survey; euro members without their own price use the euro-area price.</p><p>“The same thing” uses private-consumption PPPs. Mean earnings are pulled up by high earners, so they are higher than what most people earn.</p>',
+    method: '<p>Hourly pay is ILO average hourly earnings of employees (local currency). Where that is missing we use average monthly earnings ÷ (weekly hours actually worked × 52 ÷ 12), assuming 40 hours a week (marked “est.”) when hours are missing too.</p><p>Wages are brought forward to the latest consumer price index year.</p><p>Big Mac prices are The Economist’s latest survey; euro members without their own price use the euro-area price.</p><p>“The same thing” uses private-consumption PPPs. Average earnings are pulled up by high earners, so they are higher than what most people earn.</p>',
   },
   zh: {
     title: '工作1小时能买什么？', lead: '把各国平均工资（ILO）和物价结合起来，比较买同样的东西需要工作多久。',
@@ -26,7 +26,7 @@ const dict = {
     tabBm: '巨无霸', tabWage: '时薪（物价调整后）', colHourly: '平均时薪（本币）', colPpp: '时薪（国际元）', colBm: '买巨无霸所需工作', colHours: '每周工时', colYear: '工资年份',
     fastest: '买一个巨无霸所需的工作时间（由短到长）', est: '估计', unreliable: '通胀过高或货币变更、不宜比较的{n}个国家未列入排名。',
     noData: '该国没有工资数据。', share: '在{c}，一个巨无霸需要工作{m}分钟。全球第{r}名',
-    method: '<p>平均时薪 = ILO雇员平均月收入（本币）÷（每周实际工时×52÷12）。缺少工时数据的国家按每周40小时计算并标注“估计”。</p><p>工资按消费者物价指数调整到最新年份。</p><p>巨无霸价格来自《经济学人》最新调查；没有单独价格的欧元区国家使用欧元区价格。</p><p>“同样的东西”使用居民消费购买力平价换算。平均收入会被高收入者拉高。</p>',
+    method: '<p>平均时薪采用ILO雇员平均小时收入（本币）。没有时薪数据时用“平均月收入÷（每周实际工时×52÷12）”，若工时也缺失则按每周40小时计算并标注“估计”。</p><p>工资按消费者物价指数调整到最新年份。</p><p>巨无霸价格来自《经济学人》最新调查；没有单独价格的欧元区国家使用欧元区价格。</p><p>“同样的东西”使用居民消费购买力平价换算。平均收入会被高收入者拉高。</p>',
   },
   ko: {
     title: '1시간 일하면 무엇을 살 수 있을까?', lead: '각국의 평균 임금(ILO)과 물가를 합쳐, 같은 물건을 사려면 몇 시간 일해야 하는지 비교합니다.',
@@ -35,7 +35,7 @@ const dict = {
     tabBm: '빅맥', tabWage: '시급(물가 조정)', colHourly: '평균 시급(현지 통화)', colPpp: '시급(국제 달러)', colBm: '빅맥에 필요한 노동', colHours: '주당 노동시간', colYear: '임금 연도',
     fastest: '빅맥 1개에 필요한 노동시간 (짧은 순)', est: '추정', unreliable: '물가 상승이 크거나 통화 변경 등으로 비교가 어려운 {n}개국은 순위에서 뺐습니다.',
     noData: '이 나라는 임금 데이터가 없습니다.', share: '{c}에서는 빅맥 1개에 {m}분 노동. 세계 {r}위',
-    method: '<p>평균 시급 = ILO 피고용자 평균 월소득(현지 통화) ÷ (주당 실노동시간×52÷12). 노동시간 자료가 없으면 주 40시간으로 가정하고 “추정”으로 표시합니다.</p><p>임금은 최신 소비자물가지수 연도까지 물가 상승분을 반영했습니다.</p><p>빅맥 가격은 The Economist 최신 조사이며, 개별 가격이 없는 유로존 국가는 유로존 가격을 씁니다.</p><p>“같은 물건” 계산은 민간소비 구매력평가(PPP)를 씁니다. 평균 소득은 고소득자에 끌려 올라갑니다.</p>',
+    method: '<p>평균 시급은 ILO 피고용자 평균 시간당 소득(현지 통화)을 씁니다. 없으면 “평균 월소득 ÷ (주당 실노동시간×52÷12)”로 구하고, 노동시간도 없으면 주 40시간으로 가정해 “추정”으로 표시합니다.</p><p>임금은 최신 소비자물가지수 연도까지 물가 상승분을 반영했습니다.</p><p>빅맥 가격은 The Economist 최신 조사이며, 개별 가격이 없는 유로존 국가는 유로존 가격을 씁니다.</p><p>“같은 물건” 계산은 민간소비 구매력평가(PPP)를 씁니다. 평균 소득은 고소득자에 끌려 올라갑니다.</p>',
   },
   es: {
     title: '¿Qué se compra con una hora de trabajo?', lead: 'Salarios medios (OIT) y precios combinados muestran cuánto hay que trabajar en cada país para comprar lo mismo.',
@@ -44,7 +44,7 @@ const dict = {
     tabBm: 'Big Mac', tabWage: 'Salario (ajustado por precios)', colHourly: 'Salario por hora (moneda local)', colPpp: 'Salario por hora ($ internacionales)', colBm: 'Trabajo por un Big Mac', colHours: 'Horas por semana', colYear: 'Año del salario',
     fastest: 'Trabajo necesario para un Big Mac (de menor a mayor)', est: 'est.', unreliable: 'Se excluyen del ranking {n} países con inflación alta o cambios de moneda.',
     noData: 'No hay datos salariales de este país.', share: 'En {c}, un Big Mac cuesta {m} minutos de trabajo. Puesto {r} del mundo',
-    method: '<p>Salario por hora = ingresos mensuales medios de los asalariados (OIT, moneda local) ÷ (horas semanales trabajadas × 52 ÷ 12). Sin datos de horas se suponen 40 y se marca “est.”.</p><p>Los salarios se actualizan con el índice de precios al consumo más reciente.</p><p>Los precios del Big Mac son de The Economist; los países del euro sin precio propio usan el de la zona euro.</p><p>“Lo mismo” usa PPA del consumo privado. Los ingresos medios están inflados por los salarios altos.</p>',
+    method: '<p>El salario por hora es el ingreso medio por hora de los asalariados (OIT, moneda local). Si falta, se usa ingreso mensual medio ÷ (horas semanales trabajadas × 52 ÷ 12), suponiendo 40 horas (marcado “est.”) si tampoco hay horas.</p><p>Los salarios se actualizan con el índice de precios al consumo más reciente.</p><p>Los precios del Big Mac son de The Economist; los países del euro sin precio propio usan el de la zona euro.</p><p>“Lo mismo” usa PPA del consumo privado. Los ingresos medios están inflados por los salarios altos.</p>',
   },
 };
 
