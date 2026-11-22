@@ -97,7 +97,7 @@ export function scatter(host, { pts, xLabel, yLabel, logX = false, logY = false,
     const span = b - a, step0 = Math.pow(10, Math.floor(Math.log10(span / 5))), step = [1, 2, 5, 10].map(m => m * step0).find(s => span / s <= 6);
     const out = []; for (let v = Math.ceil(a / step) * step; v <= b; v += step) out.push(+v.toFixed(10)); return out;
   };
-  const lab = (v, log) => compact(log ? Math.pow(10, v) : v, lang);
+  const lab = (v, log) => { const n = log ? Math.pow(10, v) : v; return Math.abs(n) < 1 && n !== 0 ? new Intl.NumberFormat(LOC[lang], { maximumSignificantDigits: 2 }).format(n) : compact(n, lang); };
   let g = '';
   for (const v of ticks(x0, x1, logX)) g += `<line class="grid" x1="${sx(v)}" x2="${sx(v)}" y1="${T}" y2="${H - B}"/><text class="tick" x="${sx(v)}" y="${H - B + 16}" text-anchor="middle">${lab(v, logX)}</text>`;
   for (const v of ticks(y0, y1, logY)) g += `<line class="grid" y1="${sy(v)}" y2="${sy(v)}" x1="${L}" x2="${W - R}"/><text class="tick" x="${L - 6}" y="${sy(v) + 4}" text-anchor="end">${lab(v, logY)}</text>`;

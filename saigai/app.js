@@ -61,14 +61,14 @@ boot({
       ${shareX(T(t('share'), { c: name(st.c, lang), x: fmt(me.ratio, lang, 1) }), lang)}
       <h2>${t('chart')}</h2><div id="sc"></div>
       ${tabs([['worse', t('tabWorse')], ['better', t('tabBetter')]], st.tab)}<div id="tb"></div>`;
-    scatter(root.querySelector('#sc'), { lang, logX: true, logY: true, hl: st.c, xLabel: t('xl'), yLabel: t('yl'), line: data.fit, pts: rows.map(r => ({ x: r.gdp, y: Math.max(r.rate, 0.001), iso: r.iso, tip: `${name(r.iso, lang)} — ${fmt(r.rate, lang, 2)} (${rtxt(r)})` })) });
+    scatter(root.querySelector('#sc'), { lang, logX: true, logY: true, hl: st.c, xLabel: t('xl'), yLabel: t('yl'), line: data.fit, pts: rows.map(r => ({ x: r.gdp, y: Math.max(r.rate, 0.005), iso: r.iso, tip: `${name(r.iso, lang)} — ${fmt(r.rate, lang, 2)} (${rtxt(r)})` })) });
     const draw = () => table(root.querySelector('#tb'), { lang, rows, hl: st.c, sortKey: 'ratio', sortAsc: st.tab === 'better', cols: [
       { k: 'iso', h: t('country'), f: r => cname(r.iso, lang), s: r => name(r.iso, lang) },
       { k: 'ratio', h: t('colRatio'), n: 1, f: r => `<span class="${r.ratio >= 1 ? 'up' : 'down'}">${fmt(r.ratio, lang, r.ratio < 1 ? 2 : 1)}×</span>` },
       { k: 'rate', h: t('colRate'), n: 1, f: r => fmt(r.rate, lang, 2) },
       { k: 'expected', h: t('colExp'), n: 1, f: r => fmt(r.expected, lang, 2) },
       { k: 'worstY', h: t('colWorst'), n: 1 },
-      { k: 'damage', h: t('colDmg'), n: 1, f: r => r.damage != null ? fmt(r.damage, lang, 3) + '%' : '–' },
+      { k: 'damage', h: t('colDmg'), n: 1, f: r => r.damage != null ? fmt(r.damage, lang, r.damage < 0.1 ? 3 : 2) + '%' : '–' },
     ] });
     root.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { st.tab = b.dataset.tab; root.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-selected', x === b)); draw(); });
     root.querySelector('#pick').onchange = e => { st.c = e.target.value; st.redraw(); };

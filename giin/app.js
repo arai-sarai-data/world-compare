@@ -83,8 +83,8 @@ boot({
       }
       const w = st.tab === 'w';
       const list = rows.filter(r => w ? r.womenGap != null : r.ageGap != null);
-      v.innerHTML = `<h3>${w ? t('chartW') : t('chartA')}</h3><div id="sc"></div><h3>${w ? t('listW') : t('listA')}</h3><div id="tb"></div>`;
-      scatter(v.querySelector('#sc'), { lang, hl: st.c, xLabel: w ? t('xlW') : t('xlA'), yLabel: w ? t('ylW') : t('ylA'), line: { a: 0, b: 1 }, pts: list.map(r => ({ x: w ? r.femPop : r.medAge, y: w ? r.women : r.mpAge, iso: r.iso, tip: `${name(r.iso, lang)} — ${gapTxt(w ? r.womenGap : r.ageGap, st.tab)}` })) });
+      v.innerHTML = `${w ? '' : `<h3>${t('chartA')}</h3><div id="sc"></div>`}<h3>${w ? t('listW') : t('listA')}</h3><div id="tb"></div>`;
+      if (!w) scatter(v.querySelector('#sc'), { lang, hl: st.c, xLabel: w ? t('xlW') : t('xlA'), yLabel: w ? t('ylW') : t('ylA'), line: { a: 0, b: 1 }, pts: list.map(r => ({ x: w ? r.femPop : r.medAge, y: w ? r.women : r.mpAge, iso: r.iso, tip: `${name(r.iso, lang)} — ${gapTxt(w ? r.womenGap : r.ageGap, st.tab)}` })) });
       table(v.querySelector('#tb'), { lang, rows: list, hl: st.c, sortKey: w ? 'womenGap' : 'ageGap', cols: w ? [
         { k: 'iso', h: t('country'), f: r => cname(r.iso, lang), s: r => name(r.iso, lang) },
         { k: 'womenGap', h: t('gapW'), n: 1, f: r => fmt(r.womenGap, lang, 1) },

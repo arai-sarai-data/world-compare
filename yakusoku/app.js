@@ -84,7 +84,7 @@ boot({
         <div class="kpis" style="margin:0"><div class="kpi"><span>${t('now')} (${r.y ?? '–'})</span><b>${r.v != null ? fmt(r.v, lang, 2) + '%' : '–'}</b></div>
         <div class="kpi"><span>${t('target')}</span><b>${fmt(r.target, lang, 1)}%</b></div>
         <div class="kpi"><span>${t('tenAgo')}</span><b>${r.before != null ? fmt(r.before, lang, 2) + '%' : '–'}</b></div>
-        ${r.p === 'edu' ? `<div class="kpi"><span>${t('budgetShare')} (${r.y2 ?? '–'})</span><b>${r.v2 != null ? fmt(r.v2, lang, 1) + '%' : '–'}</b><span>${t('target')} 15%</span></div>` : ''}</div></div>`).join('') : `<p class="muted">${t('notApplicable')}</p>`;
+        ${r.p === 'edu' && r.v2 != null ? `<div class="kpi"><span>${t('budgetShare')} (${r.y2 ?? '–'})</span><b>${r.v2 != null ? fmt(r.v2, lang, 1) + '%' : '–'}</b><span>${t('target')} 15%</span></div>` : ''}</div></div>`).join('') : `<p class="muted">${t('notApplicable')}</p>`;
     };
     root.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { st.p = b.dataset.tab; root.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-selected', x === b)); drawP(); });
     root.querySelector('#pick').onchange = e => { st.c = e.target.value; drawC(); drawP(); };

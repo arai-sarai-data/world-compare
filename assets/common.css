@@ -23,6 +23,8 @@ h3 { font-size: 1.02rem; margin: 20px 0 8px; }
 .small { font-size: .88rem; }
 
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 14px 0; }
+.card .kpi { border: 0; background: var(--bg); }
+.card .kpi b { font-size: 1.3rem; }
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 14px 0; }
 .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
 .kpi b { display: block; font-size: 1.7rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
@@ -97,7 +99,11 @@ details summary { cursor: pointer; font-weight: 600; }
 
 @media (max-width: 560px) {
   body { font-size: 15px; }
-  .brow { grid-template-columns: 96px 1fr auto; gap: 8px; }
+  .brow { grid-template-columns: 118px 1fr auto; gap: 8px; font-size: .86rem; }
+  .kpis { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kpi { padding: 10px 12px; }
+  .card .kpis .kpi b { font-size: 1.15rem; }
+  .pick select { max-width: 170px; }
   th, td { padding: 7px 7px; }
   .kpi b { font-size: 1.4rem; }
 }
