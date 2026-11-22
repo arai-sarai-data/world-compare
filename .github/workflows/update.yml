@@ -24,6 +24,8 @@ jobs:
           node-version: 22
       - name: Build data (a failed source keeps its previous file)
         run: node scripts/build.mjs all
+        env:
+          ILO_PEEK: JPN,KOR,CHN
       - name: Check data files
         run: node scripts/check.mjs || echo "::warning::some data files are incomplete"
       - name: Commit data
