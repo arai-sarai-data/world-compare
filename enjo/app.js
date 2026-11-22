@@ -1,4 +1,4 @@
-import { boot, table, bars, scatter, fit, cname, name, fmt, compact, countrySelect, defaultCountry, tabs, shareX } from '../assets/common.js';
+import { boot, table, bars, scatter, fit, cname, name, fmt, compact, countrySelect, defaultCountry, pickCountry, tabs, shareX } from '../assets/common.js';
 
 const dict = {
   ja: {
@@ -51,7 +51,7 @@ boot({
     const rows = data.rows;
     st.d ||= lang === 'ja' ? 'JPN' : 'USA';
     const isos = rows.map(r => r.iso);
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     root.innerHTML = `<p class="muted">${T(t('period'), { a, b, n: fmt(data.rollCalls, lang) })}</p>
       ${tabs(data.donors.map(d => [d, name(d, lang)]), st.d)}<div id="dv"></div>
       <h2 id="mh"></h2><div class="controls">${countrySelect(isos, st.c, lang)}</div><div id="mine"></div><p class="muted small">${t('refNote')}</p>`;

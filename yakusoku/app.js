@@ -1,4 +1,4 @@
-import { boot, bars, cname, name, fmt, countrySelect, defaultCountry, tabs, shareX, esc } from '../assets/common.js';
+import { boot, bars, cname, name, fmt, countrySelect, defaultCountry, pickCountry, tabs, shareX, esc } from '../assets/common.js';
 
 const P = ['nato', 'oda', 'abuja', 'edu'];
 const dict = {
@@ -67,7 +67,7 @@ boot({
     const rows = data.rows;
     st.p ||= 'nato';
     const isos = [...new Set(rows.map(r => r.iso))];
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     root.innerHTML = `${tabs(P.map(p => [p, t(p)]), st.p)}<div id="pl"></div><h2>${t('byCountry')}</h2><div class="controls">${countrySelect(isos, st.c, lang)}</div><div id="bc"></div>`;
     const drawP = () => {
       const list = rows.filter(r => r.p === st.p && r.v != null).sort((a, b) => b.v - a.v);

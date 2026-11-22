@@ -1,4 +1,4 @@
-import { boot, table, bars, scatter, cname, name, fmt, countrySelect, defaultCountry, shareX } from '../assets/common.js';
+import { boot, table, bars, scatter, cname, name, fmt, countrySelect, defaultCountry, pickCountry, shareX } from '../assets/common.js';
 
 const IND = ['life', 'u5', 'homicide', 'learn', 'water', 'net', 'pm25'];
 const dict = {
@@ -50,7 +50,7 @@ boot({
   id: 'zei', dict,
   render(data, t, lang, root, st) {
     const rows = data.rows, isos = rows.map(r => r.iso);
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     const me = rows.find(r => r.iso === st.c);
     root.innerHTML = `<div class="controls">${countrySelect(isos, st.c, lang)}</div>
       <div class="kpis">

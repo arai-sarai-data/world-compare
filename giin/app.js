@@ -1,4 +1,4 @@
-import { boot, table, scatter, cname, name, fmt, countrySelect, defaultCountry, tabs, shareX } from '../assets/common.js';
+import { boot, table, scatter, cname, name, fmt, countrySelect, defaultCountry, pickCountry, tabs, shareX } from '../assets/common.js';
 
 const dict = {
   ja: {
@@ -54,7 +54,7 @@ boot({
   render(data, t, lang, root, st) {
     const rows = data.rows, isos = rows.map(r => r.iso);
     const hasAge = rows.some(r => r.ageGap != null);
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     st.tab ||= 'w';
     const me = rows.find(r => r.iso === st.c);
     const gapTxt = (g, unit) => g == null ? '' : g >= 0 ? T(t(unit === 'w' ? 'fewer' : 'older'), { g: fmt(g, lang, 1) }) : `${fmt(-g, lang, 1)} ${unit === 'w' ? t('pts') : t('yrs')} ${t('more')}`;

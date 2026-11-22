@@ -136,6 +136,8 @@ export function tabs(items, active) {
 }
 
 export const defaultCountry = lang => ({ ja: 'JPN', en: 'USA', zh: 'CHN', ko: 'KOR', es: 'ESP' }[lang]);
+// Keep the current choice if valid; else the language's home country, Japan, the US, or the first available.
+export const pickCountry = (cur, isos, lang) => [cur, defaultCountry(lang), 'JPN', 'USA', isos[0]].find(c => c && isos.includes(c));
 
 // Page frame. dict: {ja:{title, lead, ...}}; render(data, t, lang, root, state)
 export async function boot({ id, dict, render, base = '../' }) {

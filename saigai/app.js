@@ -1,4 +1,4 @@
-import { boot, table, scatter, cname, name, fmt, countrySelect, defaultCountry, shareX, tabs } from '../assets/common.js';
+import { boot, table, scatter, cname, name, fmt, countrySelect, defaultCountry, pickCountry, shareX, tabs } from '../assets/common.js';
 
 const dict = {
   ja: {
@@ -48,7 +48,7 @@ boot({
   id: 'saigai', dict,
   render(data, t, lang, root, st) {
     const rows = data.rows, isos = rows.map(r => r.iso);
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     st.tab ||= 'worse';
     const me = rows.find(r => r.iso === st.c);
     const rtxt = r => r.ratio >= 1 ? T(t('worse'), { x: fmt(r.ratio, lang, 1) }) : T(t('better'), { x: fmt(r.ratio, lang, 2) });

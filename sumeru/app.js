@@ -1,4 +1,4 @@
-import { boot, table, cname, name, fmt, countrySelect, defaultCountry, esc } from '../assets/common.js';
+import { boot, table, cname, name, fmt, countrySelect, defaultCountry, pickCountry, esc } from '../assets/common.js';
 
 const dict = {
   ja: {
@@ -55,7 +55,7 @@ boot({
   render(data, t, lang, root, st) {
     const { visa } = data;
     const passports = Object.keys(visa.m);
-    if (!st.p || !passports.includes(st.p)) st.p = passports.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.p = pickCountry(st.p, passports, lang);
     st.e ||= 'easy'; st.cl ||= 'any';
     const byIso = Object.fromEntries(data.rows.map(r => [r.iso, r]));
     // Percentile where 100 = best: cheap prices, few homicides, many internet users, long lives.

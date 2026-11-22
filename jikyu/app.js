@@ -1,4 +1,4 @@
-import { boot, table, bars, cname, name, fmt, esc, countrySelect, defaultCountry, shareX, tabs, cur as curOf } from '../assets/common.js';
+import { boot, table, bars, cname, name, fmt, esc, countrySelect, defaultCountry, pickCountry, shareX, tabs, cur as curOf } from '../assets/common.js';
 
 const dict = {
   ja: {
@@ -58,7 +58,7 @@ boot({
     const ok = rows.filter(r => !r.unreliable);
     const bmRank = ok.filter(r => r.bmMin != null).sort((a, b) => a.bmMin - b.bmMin);
     const isos = rows.map(r => r.iso);
-    if (!st.c || !isos.includes(st.c)) st.c = isos.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
+    st.c = pickCountry(st.c, isos, lang);
     if (st.amount == null) st.amount = null;
     const me = rows.find(r => r.iso === st.c);
     const rk = bmRank.findIndex(r => r.iso === st.c) + 1;
@@ -75,7 +75,8 @@ boot({
       <div id="view"></div>`;
 
     const amt = root.querySelector('#amt');
-    const defAmt = me?.bm ? Math.round(me.bm * 10) : 1000;
+    const sig2 = v => { const p = Math.pow(10, Math.floor(Math.log10(v)) - 1); return Math.round(v / p) * p; };
+    const defAmt = me?.bm ? sig2(me.bm * 10) : me ? sig2(me.hourly * 10) : 1000;
     amt.value = st.amount ?? defAmt;
     const calc = () => {
       const x = +amt.value; st.amount = amt.value;
