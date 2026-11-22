@@ -33,7 +33,17 @@ export async function loadNames(base) {
 export const name = (iso, lang) => NAMES[iso]?.[lang] || NAMES[iso]?.en || iso;
 export const region = iso => NAMES[iso]?.r || 'Other';
 export const cur = iso => NAMES[iso]?.cur || '';
-export const flag = iso => { const a = NAMES[iso]?.a2; return a && a.length === 2 && a !== 'XK' ? String.fromCodePoint(...[...a].map(c => 127397 + c.charCodeAt(0))) : ''; };
+// Windows shows flag emoji as two letters; detect real flag rendering once and hide them otherwise.
+const FLAGS = (() => {
+  try {
+    const c = document.createElement('canvas'); c.width = c.height = 16; const x = c.getContext('2d');
+    x.font = '14px sans-serif'; x.fillText('\u{1F1EF}\u{1F1F5}', 0, 14);
+    const d = x.getImageData(0, 0, 16, 16).data;
+    for (let i = 0; i < d.length; i += 4) if (d[i + 3] && (Math.abs(d[i] - d[i + 1]) > 40 || Math.abs(d[i] - d[i + 2]) > 40)) return true;
+    return false;
+  } catch { return false; }
+})();
+export const flag = iso => { if (!FLAGS) return ''; const a = NAMES[iso]?.a2; return a && a.length === 2 && a !== 'XK' ? String.fromCodePoint(...[...a].map(c => 127397 + c.charCodeAt(0))) : ''; };
 export const cname = (iso, lang) => `<span class="cn">${flag(iso)} ${esc(name(iso, lang))}</span>`;
 
 export function fmt(n, lang, d = 0) {
