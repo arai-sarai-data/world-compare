@@ -43,7 +43,7 @@ h3 { font-size: 1.02rem; margin: 20px 0 8px; }
 .tools input { width: 100%; max-width: 320px; }
 .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
 table { border-collapse: collapse; width: 100%; font-size: .94rem; font-variant-numeric: tabular-nums; }
-th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; white-space: nowrap; }
 tr:last-child td { border-bottom: 0; }
 th { font-weight: 600; font-size: .84rem; color: var(--muted); cursor: pointer; white-space: nowrap; position: sticky; top: 0; background: var(--card); }
 th.sorted::after { content: " ↓"; } th.sorted.asc::after { content: " ↑"; }
@@ -62,7 +62,7 @@ tr.hl td { background: var(--hl); }
 .track em.good { background: var(--good); } .track em.bad { background: var(--bad); } .track em.warn { background: var(--warn); }
 .track .mark { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--fg); }
 .val { font-variant-numeric: tabular-nums; min-width: 4.5em; text-align: right; }
-.pill { display: inline-block; font-size: .8rem; padding: 1px 8px; border-radius: 999px; background: var(--line); }
+.pill { display: inline-block; white-space: nowrap; font-size: .8rem; padding: 1px 8px; border-radius: 999px; background: var(--line); }
 .pill.good { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good); }
 .pill.bad { background: color-mix(in srgb, var(--bad) 18%, transparent); color: var(--bad); }
 .pill.warn { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }

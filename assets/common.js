@@ -38,6 +38,7 @@ export const cname = (iso, lang) => `<span class="cn">${flag(iso)} ${esc(name(is
 
 export function fmt(n, lang, d = 0) {
   if (n == null || Number.isNaN(n)) return '–';
+  if (Math.abs(n) < 0.5 * 10 ** -d) n = 0; // avoid "-0"
   return new Intl.NumberFormat(LOC[lang], { maximumFractionDigits: d, minimumFractionDigits: 0 }).format(n);
 }
 export function compact(n, lang) {

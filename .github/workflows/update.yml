@@ -12,10 +12,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   data:
     if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[data]')
@@ -40,6 +36,9 @@ jobs:
 
   deploy:
     needs: data
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     if: always() && (needs.data.result == 'success' || needs.data.result == 'skipped')
     runs-on: ubuntu-latest
     environment:

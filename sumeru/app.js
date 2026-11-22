@@ -58,7 +58,8 @@ boot({
     if (!st.p || !passports.includes(st.p)) st.p = passports.includes(defaultCountry(lang)) ? defaultCountry(lang) : 'JPN';
     st.e ||= 'easy'; st.cl ||= 'any';
     const byIso = Object.fromEntries(data.rows.map(r => [r.iso, r]));
-    const P = [pct(data.rows, 'price', 1), pct(data.rows, 'hom', 1), pct(data.rows, 'net', -1), pct(data.rows, 'life', -1)];
+    // Percentile where 100 = best: cheap prices, few homicides, many internet users, long lives.
+    const P = [pct(data.rows, 'price', -1), pct(data.rows, 'hom', -1), pct(data.rows, 'net', 1), pct(data.rows, 'life', 1)];
     for (const r of data.rows) { const s = P.map(p => p[r.iso]).filter(v => v != null); r.score = s.length >= 3 ? s.reduce((a, b) => a + b, 0) / s.length : null; }
     root.innerHTML = `<div class="controls">${countrySelect(passports, st.p, lang).replace(t('you'), t('passport'))}
       <label>${t('fEntry')} <select id="fe">${['free', 'easy', 'all'].map(k => `<option value="${k}"${st.e === k ? ' selected' : ''}>${t({ free: 'fFree', easy: 'fEasy', all: 'fAll' }[k])}</option>`).join('')}</select></label>
