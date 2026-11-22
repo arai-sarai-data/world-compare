@@ -1,4 +1,4 @@
-import { boot, table, bars, scatter, cname, name, fmt, countrySelect, defaultCountry, pickCountry, shareX } from '../assets/common.js';
+import { boot, table, bars, scatter, cname, name, fmt, countrySelect, defaultCountry, pickCountry, shareX } from '../assets/common.js?v=3';
 
 const IND = ['life', 'u5', 'homicide', 'learn', 'water', 'net', 'pm25'];
 const dict = {

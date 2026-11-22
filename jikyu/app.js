@@ -1,4 +1,4 @@
-import { boot, table, bars, cname, name, fmt, esc, countrySelect, defaultCountry, pickCountry, shareX, tabs, cur as curOf } from '../assets/common.js';
+import { boot, table, bars, cname, name, fmt, esc, countrySelect, defaultCountry, pickCountry, shareX, tabs, cur as curOf } from '../assets/common.js?v=3';
 
 const dict = {
   ja: {

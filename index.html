@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>世界くらべ / World, Compared</title>
 <meta name="description" content="ばらばらの公開データを組み合わせて、世界の国を比べる7つのサイト。Seven sites that combine scattered public data to compare countries.">
-<link rel="stylesheet" href="assets/common.css">
+<link rel="stylesheet" href="assets/common.css?v=3">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 </head>
 <body>
@@ -13,7 +13,7 @@
 <main id="app"></main>
 <footer><div class="wrap muted" id="foot"></div></footer>
 <script type="module">
-import { LANGS, getLang, common, REPO } from './assets/common.js';
+import { LANGS, getLang, common, REPO } from './assets/common.js?v=3';
 const S = [
   ['jikyu', { ja: ['1時間働くと、何が買える？', '各国の平均賃金と物価から、同じ物を買うのに何時間働くかを比べる。', 'ビッグマック1個は何分の労働？'], en: ['What does an hour of work buy?', 'Wages and prices combined: how long people work to buy the same thing.', 'How many minutes for a Big Mac?'], zh: ['工作1小时能买什么？', '结合工资和物价，比较买同样的东西要工作多久。', '一个巨无霸要工作几分钟？'], ko: ['1시간 일하면 무엇을 살 수 있을까?', '임금과 물가로 같은 물건을 사는 데 몇 시간 일하는지 비교.', '빅맥 1개는 몇 분 노동?'], es: ['¿Qué se compra con una hora de trabajo?', 'Salarios y precios: cuánto se trabaja para comprar lo mismo.', '¿Cuántos minutos por un Big Mac?'] }],
   ['zei', { ja: ['税金の元は取れている？', '税負担の重さと、寿命・治安・学力などの成果を並べて比べる。', '同じ税負担の国より成果は多い？'], en: ['Are taxes paying off?', 'Tax burden next to outcomes like life expectancy, safety and learning.', 'More outcome than similar-tax countries?'], zh: ['税交得值吗？', '把税负与寿命、治安、学力等成果并列比较。', '比同等税负的国家成果更多吗？'], ko: ['세금 낸 만큼 돌아오나?', '세금 부담과 수명·치안·학력 등 성과를 나란히 비교.', '세금이 비슷한 나라보다 성과가 많을까?'], es: ['¿Rinden los impuestos?', 'Carga fiscal frente a resultados como esperanza de vida, seguridad y aprendizaje.', '¿Más resultados que países con impuestos similares?'] }],

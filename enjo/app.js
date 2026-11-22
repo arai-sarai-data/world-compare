@@ -1,4 +1,4 @@
-import { boot, table, bars, scatter, fit, cname, name, fmt, compact, countrySelect, defaultCountry, pickCountry, tabs, shareX } from '../assets/common.js';
+import { boot, table, bars, scatter, fit, cname, name, fmt, compact, countrySelect, defaultCountry, pickCountry, tabs, shareX } from '../assets/common.js?v=3';
 
 const dict = {
   ja: {

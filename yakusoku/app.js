@@ -1,4 +1,4 @@
-import { boot, bars, cname, name, fmt, countrySelect, defaultCountry, pickCountry, tabs, shareX, esc } from '../assets/common.js';
+import { boot, bars, cname, name, fmt, countrySelect, defaultCountry, pickCountry, tabs, shareX, esc } from '../assets/common.js?v=3';
 
 const P = ['nato', 'oda', 'abuja', 'edu'];
 const dict = {
